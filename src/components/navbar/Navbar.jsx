@@ -6,6 +6,7 @@ import Navbar  from 'react-bootstrap/Navbar';
 import './navbar.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 const MyNavbar = () => {
 
   const [font, setFont] = useState(false)
@@ -34,8 +35,8 @@ const MyNavbar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mx-auto btnNavBar d-flex gap-5">
-              <Nav.Link className='me-5' href="#home">Inicio</Nav.Link>
-              <Nav.Link className='me-5' href="#about">Quienes somos</Nav.Link>
+              <Nav.Link className='me-5' href="/">Inicio</Nav.Link>
+              <Nav.Link className='me-5' href="/quienes-somos">Quienes somos</Nav.Link>
               <Nav.Link className='me-5' href="#products">Productos</Nav.Link>
               <Nav.Link className='me-5' href="#contact">Contactanos</Nav.Link>
             </Nav>

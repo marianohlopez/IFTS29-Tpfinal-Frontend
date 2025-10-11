@@ -3,14 +3,14 @@ import React from 'react';
 import './Home.css';
 import Highlights from './highlights/Highlights';
 import Benefits from './benefits/Benefits';
-import AboutUs from './aboutUs/AboutUs';
+import AboutUsSnippet from './aboutUsSnippet/AboutUsSnippet';
 
 function Home() {
   return (
     <>
       <Highlights />
       <Benefits />
-      <AboutUs />
+      <AboutUsSnippet />
     </>
   );
 }
