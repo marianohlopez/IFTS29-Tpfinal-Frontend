@@ -6,6 +6,8 @@ import Home from './components/home/Home.jsx';
 import Footer from './components/footer/Footer.jsx';
 import About from './components/aboutUS/AboutUS.jsx';
 import ProductsPage from "./components/products/ProductsPage";
+import ContactPage from "./components/contact/ContactPage";
+import NotFoundPage from "./components/notfound/NotFoundPage";
 
 function App() {
   return (
@@ -16,7 +18,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />           
           <Route path="/quienes-somos" element={<About />} />   
-          <Route path="/productos" element={<ProductsPage />} />       
+          <Route path="/productos" element={<ProductsPage />} />  
+          <Route path="/contacto" element={<ContactPage />} />
+          
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
         
         <Footer />
