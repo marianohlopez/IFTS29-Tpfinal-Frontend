@@ -1,19 +1,17 @@
-import React from "react";
+import { Link } from "react-router-dom";
+import "./ProductCard.css";
 
 const ProductCard = ({ product }) => (
-  <div className="product-card">
-    <img
-      src={product.image}
-      alt={product.name}
-      style={{ width: "100%", height: "150px", objectFit: "cover", borderRadius: "6px" }}
-    />
-    <h3 style={{ fontSize: "1.1rem", margin: "0.5rem 0" }}>{product.name}</h3>
-    <p style={{ color: "#888", fontSize: "0.95rem" }}>{product.description}</p>
-    <strong className="product-price">
-      ${product.price.toLocaleString()}
-    </strong>
-    {/* Aquí va el boton detalle o comprar */}
-  </div>
+    <Link to={`/productos/${product.id}`} className="product-card-link">
+        <div className="product-card">
+            <img src={product.image} alt={product.name} />
+            <h3>{product.name}</h3>
+            <p>{product.description}</p>
+            <strong className="product-price">
+            ${product.price.toLocaleString()}
+            </strong>
+        </div>
+    </Link>
 );
 
 export default ProductCard;
