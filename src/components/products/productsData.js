@@ -1,48 +1,76 @@
 const products = [
-  
   {
     id: 1,
-    name: "Cama Box Base Sommier",
-    price: 430200,
-    image: "/src/assets/Foto2.jpg",
-    description: "Cama box base sommier 2 plazas con 6 cajones y baulera.",
+    name: "Mesa Carmel Guatambú",
+    price: 1288600,
+    images: [
+      "/src/assets/productos/mesa-carmel_guatambu/main.webp",
+      "/src/assets/productos/mesa-carmel_guatambu/1.webp",
+      "/src/assets/productos/mesa-carmel_guatambu/2.webp",
+      "/src/assets/productos/mesa-carmel_guatambu/3.webp"
+    ],
+    description: "Mesa redonda de diseño moderno en madera de guatambú, ideal para comedor principal.",
   },
-  
   {
     id: 2,
-    name: "Mesa de Comedor Escandinava",
-    price: 315000,
-    image: "/src/assets/Foto3.jpg",
-    description: "Mesa de madera maciza para 6 personas, estilo escandinavo.",
+    name: "Mesa Beverly Guatambú",
+    price: 1410900,
+    images: [
+      "/src/assets/productos/mesa-beverly_guatambu/main.webp",
+      "/src/assets/productos/mesa-beverly_guatambu/1.webp",
+      "/src/assets/productos/mesa-beverly_guatambu/2.webp",
+      "/src/assets/productos/mesa-beverly_guatambu/3.webp"
+    ],
+    description: "Mesa rectangular de guatambú, líneas simples y elegantes para ambientes amplios.",
   },
   {
     id: 3,
-    name: "Aparador Vintage Roble",
-    price: 289900,
-    image: "/src/assets/quienes_somos_1.jpg",
-    description: "Aparador de roble natural con puertas y estantes internos.",
+    name: "Mesa ratona Holly Guatambú",
+    price: 837900,
+    images: [
+      "/src/assets/productos/mesaRatona-holly_guatambu/main.webp",
+      "/src/assets/productos/mesaRatona-holly_guatambu/1.webp",
+      "/src/assets/productos/mesaRatona-holly_guatambu/2.webp",
+      "/src/assets/productos/mesaRatona-holly_guatambu/3.webp"
+    ],
+    description: "Mesa ratona ovalada de madera maciza, perfecta para livings modernos.",
   },
   {
     id: 4,
-    name: "Biblioteca Modular Nogal",
-    price: 198500,
-    image: "/src/assets/quienes_somos_2.jpg",
-    description: "Biblioteca de madera de nogal, diseño modular y elegante.",
+    name: "Cómoda Sur",
+    price: 1475900,
+    images: [
+      "/src/assets/productos/comoda-sur/main.webp",
+      "/src/assets/productos/comoda-sur/1.webp",
+      "/src/assets/productos/comoda-sur/2.webp",
+      "/src/assets/productos/comoda-sur/3.webp"
+    ],
+    description: "Cómoda de tres cajones en madera clara, diseño minimalista y funcional.",
   },
   {
     id: 5,
-    name: "Mesa Ratona Minimalista",
-    price: 112000,
-    image: "/src/assets/quienes_somos_3.jpg",
-    description: "Mesa ratona de madera clara, líneas simples y modernas.",
+    name: "Rack Kuta Jr",
+    price: 1030720,
+    images: [
+      "/src/assets/productos/rack-kuta_jr/main.webp",
+      "/src/assets/productos/rack-kuta_jr/1.webp",
+      "/src/assets/productos/rack-kuta_jr/2.webp",
+      "/src/assets/productos/rack-kuta_jr/3.webp"
+    ],
+    description: "Rack bajo de madera con puertas de varillas, ideal para TV o almacenamiento.",
   },
   {
     id: 6,
-    name: "Sillón Individual Tapizado",
-    price: 256800,
-    image: "/src/assets/Foto1.jpg",
-    description: "Sillón de madera con tapizado premium y apoyabrazos.",
-  },
+    name: "Rack Vegas",
+    price: 1645650,
+    images: [
+      "/src/assets/productos/rack-vegas/main.webp",
+      "/src/assets/productos/rack-vegas/1.webp",
+      "/src/assets/productos/rack-vegas/2.webp",
+      "/src/assets/productos/rack-vegas/3.webp"
+    ],
+    description: "Rack de diseño contemporáneo en madera, con estantes y puertas para organización.",
+  }
 
 ];
 
