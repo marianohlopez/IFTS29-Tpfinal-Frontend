@@ -1,5 +1,6 @@
 import React from "react";
 import "./ContactPage.css";
+import { FaWhatsapp } from "react-icons/fa";
 
 const ContactPage = () => (
   <div className="contact-container">
@@ -9,9 +10,11 @@ const ContactPage = () => (
         Para una pronta comunicación personalizada, podés contactarnos de lunes a sábados de 10:00 a 18:00 horas por los siguientes canales de atención:
       </p>
       <ul>
-        <li>🟢 Por whatsapp al +54 11 8888 8888</li>
+        <li>
+            <FaWhatsapp style={{ color: "#25D366", fontSize: "1.2em", verticalAlign: "middle" }} />
+            {" "}Por WhatsApp al +54 11 8888 8888</li>
         <li>📞 Por Teléfono al 11 4 999 9999</li>
-        <li>✉️ Por e-mail a clientes@mueblesdelvalle.com.ar</li>
+        <li>✉️ Por e-mail llenando el formulario</li>
       </ul>
         <div className="contact-map">
             <h5> Visitanos </h5>
