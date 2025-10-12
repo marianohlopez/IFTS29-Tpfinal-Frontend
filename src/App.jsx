@@ -8,6 +8,7 @@ import About from './components/aboutUS/AboutUS.jsx';
 import ProductsPage from "./components/products/ProductsPage";
 import ContactPage from "./components/contact/ContactPage";
 import NotFoundPage from "./components/notfound/NotFoundPage";
+import ProductDetail from "./components/products/ProductDetail";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           <Route path="/quienes-somos" element={<About />} />   
           <Route path="/productos" element={<ProductsPage />} />  
           <Route path="/contacto" element={<ContactPage />} />
-          
+          <Route path="/productos/:id" element={<ProductDetail />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         
