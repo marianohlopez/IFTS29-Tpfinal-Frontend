@@ -6,7 +6,6 @@ import products from "./productsData";
 
 const ProductsPage = () => (
   <>
-    <Navbar />
     <main style={{ padding: "2rem" }}>
       <h2>Productos</h2>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "2rem" }}>
@@ -15,7 +14,6 @@ const ProductsPage = () => (
         ))}
       </div>
     </main>
-    <Footer />
   </>
 );
 
