@@ -20,7 +20,7 @@ const AboutUsSnippet = () => {
       <Button 
         variant="light" 
         className="btn-products" 
-        href="#products"
+        href="/productos"
       >
         VER PRODUCTOS
       </Button>
