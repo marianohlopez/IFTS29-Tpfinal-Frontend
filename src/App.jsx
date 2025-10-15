@@ -9,6 +9,8 @@ import ProductsPage from "./components/products/ProductsPage";
 import ContactPage from "./components/contact/ContactPage";
 import NotFoundPage from "./components/notfound/NotFoundPage";
 import ProductDetail from "./components/products/ProductDetail";
+import Login from "./components/login/Login";
+import Cart from "./components/cart/Cart";
 
 function App() {
   return (
@@ -23,6 +25,9 @@ function App() {
           <Route path="/contacto" element={<ContactPage />} />
           <Route path="/productos/:id" element={<ProductDetail />} />
           <Route path="*" element={<NotFoundPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/carrito" element={<Cart />} />
+
         </Routes>
         
         <Footer />

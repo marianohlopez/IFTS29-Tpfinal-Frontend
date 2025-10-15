@@ -15,17 +15,17 @@ const About = () => {
     { 
       title: 'Misión', 
       icon: 'bi-gem', 
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      text: 'Diseñar y fabricar muebles de autor exclusivos que equilibren la vanguardia estética con la funcionalidad práctica. Nuestra misión es dotar a los espacios de nuestros clientes con piezas de arte tangible, creadas con la más alta calidad y conciencia de diseño, asegurando una experiencia de compra transparente y un producto de herencia.',
     },
     { 
       title: 'Visión', 
       icon: 'bi-lightbulb', 
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      text: 'Ser la marca líder y referente en el mercado latinoamericano de muebles de diseño. Buscamos ser reconocidos por nuestra capacidad de innovación, la sostenibilidad de nuestros procesos y por fomentar una cultura donde el diseño de mobiliario sea valorado como una expresión artística esencial del hábitat moderno.',
     },
     { 
       title: 'Valores', 
       icon: 'bi-hand-thumbs-up', 
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      text: 'Nuestro trabajo se rige por tres pilares inquebrantables. El primero es la Artesanía y Calidad, un compromiso absoluto con la excelencia en la mano de obra, seleccionando materiales nobles que aseguren la durabilidad y la distinción de cada pieza. El segundo es la Exclusividad en el Diseño, que nos impulsa a la constante innovación y a la creación de muebles de autor con un carácter inconfundible. Finalmente, la Transparencia y Pasión define nuestra relación con el cliente y nuestro oficio, garantizando honestidad en nuestros procesos y la emoción que ponemos en cada curva, ensamblaje y detalle final.',
     },
   ];
 
@@ -41,7 +41,7 @@ const About = () => {
           <section className="mb-5">
             <h2 className="section-subtitle">Nuestra Empresa</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              En Muebles Del Valle, transformamos espacios con piezas que cuentan una historia. Fundada bajo la creencia de que el mobiliario debe ser una extensión de la personalidad, nos dedicamos a la creación artesanal de muebles de autor. Cada mesa, silla o sofá que sale de nuestro taller es una obra única, pensada para trascender lo funcional y convertirse en el corazón estético de su hogar. Nuestro equipo está compuesto por diseñadores, arquitectos y ebanistas que comparten una pasión innegable: la búsqueda de la belleza a través de la simpleza morfológica y la calidad impecable. Nos distinguimos por la selección rigurosa de materiales nobles, la atención al detalle en cada curva y ensamblaje, y la promesa de llevar a nuestros clientes diseños atemporales, lejos de las tendencias efímeras.
             </p>
           </section>
 
