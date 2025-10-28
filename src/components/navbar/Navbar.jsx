@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar  from 'react-bootstrap/Navbar';
 import './navbar.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useCart } from '../../context/CartContext';
 
 
 const MyNavbar = () => {
@@ -12,6 +13,8 @@ const MyNavbar = () => {
   const [font, setFont] = useState(false)
 
   const darkFont = () => font === false? setFont('fontHamburguer') : setFont(false);
+
+  const { cartItemCount } = useCart();
 
   return (
     <>
@@ -26,7 +29,7 @@ const MyNavbar = () => {
         </div>
 
         <div className="cart d-flex align-items-center">
-          <span className="me-2">CARRITO</span>
+          <span className="me-2">CARRITO ({cartItemCount})</span>
           <i className="bi bi-cart4 fs-2"></i>
         </div>
       </div>

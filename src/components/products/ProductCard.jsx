@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./ProductCard.css";
 
 const ProductCard = ({ product }) => (
-    <Link to={`/productos/${product.id}`} className="product-card-link">
+    <Link to={`/productos/${product._id}`} className="product-card-link">
         <div className="product-card">
             <img 
                 src={product.images[0]} 
@@ -10,7 +10,6 @@ const ProductCard = ({ product }) => (
                 className="product-card-img"
             />
             <h3>{product.name}</h3>
-            {/* <p>{product.description}</p> */}
             <strong className="product-price">
                 ${product.price.toLocaleString()}
             </strong>
