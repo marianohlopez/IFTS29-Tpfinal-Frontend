@@ -1,8 +1,7 @@
-import React from "react";
 import ProductCard from "./ProductCard";
 
 const ProductsPage = ({ products, loading, searchTerm }) => {
-  
+
   if (loading) {
     return (
       <main className="products-loading">
