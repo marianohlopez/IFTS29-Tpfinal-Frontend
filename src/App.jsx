@@ -16,6 +16,7 @@ function App() {
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
     axios
@@ -28,11 +29,14 @@ function App() {
   return (
     <Router>
       <div>
-        <MyNavbar />       
+        <MyNavbar setSearchTerm={setSearchTerm} />       
         <Routes>
           <Route path="/" element={<Home />} />           
           <Route path="/quienes-somos" element={<About />} />   
-          <Route path="/productos" element={<ProductsPage products={products} loading={loading} />} />  
+          <Route path="/productos" element={<ProductsPage 
+            products={products} 
+            loading={loading} 
+            searchTerm={searchTerm} />} />  
           <Route path="/contacto" element={<ContactPage />} />
           <Route path="/productos/:id" element={<ProductDetail products={products} />} />
           <Route path="*" element={<NotFoundPage />} />

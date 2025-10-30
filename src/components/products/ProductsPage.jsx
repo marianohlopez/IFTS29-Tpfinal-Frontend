@@ -1,18 +1,23 @@
+import React from "react";
 import ProductCard from "./ProductCard";
 
-const ProductsPage = ({ products, loading }) => {
-
+const ProductsPage = ({ products, loading, searchTerm }) => {
+  
   if (loading) {
     return (
-      <main>
+      <main className="products-loading">
         <h2>Cargando productos...</h2>
       </main>
     );
   }
 
-  if (!products.length) {
+  const filteredProducts = products.filter((p) =>
+    p.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  if (!filteredProducts.length) {
     return (
-      <main>
+      <main className="products-empty">
         <h2>No se encontraron productos 😕</h2>
       </main>
     );
@@ -22,13 +27,9 @@ const ProductsPage = ({ products, loading }) => {
     <main style={{ padding: "2rem" }}>
       <h2>Nuestros Productos</h2>
       <div className="products-list">
-        {products.length > 0 ? (
-          products.map((product) => (
-            <ProductCard key={product._id} product={product} />
-          ))
-        ) : (
-          <p>No hay productos disponibles.</p>
-        )}
+        {filteredProducts.map((product) => (
+          <ProductCard key={product._id} product={product} />
+        ))}
       </div>
     </main>
   );

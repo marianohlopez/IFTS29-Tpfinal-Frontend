@@ -7,11 +7,15 @@ import './navbar.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const MyNavbar = () => {
+const MyNavbar = ({setSearchTerm}) => {
 
   const [font, setFont] = useState(false)
 
   const darkFont = () => font === false? setFont('fontHamburguer') : setFont(false);
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   return (
     <>
@@ -22,7 +26,9 @@ const MyNavbar = () => {
 
         <div className="searchBar d-flex align-items-center">
           <i className="bi bi-search me-2"></i>
-          <input type="text" placeholder="Buscar productos..." />
+          <input type="text" 
+            placeholder="Buscar productos..." 
+            onChange={handleSearchChange}/>
         </div>
 
         <div className="cart d-flex align-items-center">
