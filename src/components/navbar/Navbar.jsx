@@ -7,6 +7,7 @@ import './navbar.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useCart } from '../../context/CartContext';
 
+console.log("Navbar.jsx: useCart importado:", useCart);
 
 const MyNavbar = () => {
 

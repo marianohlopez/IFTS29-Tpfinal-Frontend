@@ -6,14 +6,15 @@ import { useCart } from '../../context/CartContext';
 const API_URL = 'https://ifts-29-tpfinal-backend.vercel.app';
 
 const ProductDetail = () => {
-  const { id } = useParams();
+const { id } = useParams();
+const { addToCart } = useCart();
 
-  const [product, setProduct] = useState(null);
+const [product, setProduct] = useState(null);
 const [loading, setLoading] = useState(true);
 const [error, setError] = useState(null);
 const [selectedImg, setSelectedImg] = useState("");
+
 useEffect(() => {
-const { addToCart } = useCart();
 const fetchProduct = async () => {
 
 if (!id) return;

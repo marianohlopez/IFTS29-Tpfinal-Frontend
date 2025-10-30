@@ -1,12 +1,19 @@
 import React, { createContext, useState, useContext } from 'react';
 
+console.log("CartContext.jsx: Módulo evaluado");
+
 const CartContext = createContext();
 
 export const useCart = () => {
-  return useContext(CartContext);
+  const context = useContext(CartContext);
+  if (context === undefined) {
+    throw new Error('useCart debe usarse dentro de CartProvider');
+  }
+  return context;
 };
 
 export const CartProvider = ({ children }) => {
+  console.log("CartProvider: Renderizando, proveyendo contexto.");
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (product) => {
