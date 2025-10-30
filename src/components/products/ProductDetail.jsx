@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import products from "./productsData";
 import "./ProductDetail.css";
 
-const ProductDetail = () => {
+const ProductDetail = ({products}) => {
   const { id } = useParams();
-  const product = products.find((p) => p.id === Number(id));
+  const product = products.find((p) => p._id === id);
   const validImages = (product?.images || []).filter(Boolean);
   const [selectedImg, setSelectedImg] = useState(validImages[0] || "");
 
