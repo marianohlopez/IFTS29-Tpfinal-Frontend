@@ -11,6 +11,7 @@ import NotFoundPage from "./components/notfound/NotFoundPage";
 import ProductDetail from "./components/products/ProductDetail";
 import Login from "./components/login/Login";
 import Cart from "./components/cart/Cart";
+import UpdateStock from "./components/admin/UpdateStock";
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/carrito" element={<Cart />} />
+          <Route path="/admin/stock" element={<UpdateStock />} />
         </Routes>     
         <Footer />
       </div>
