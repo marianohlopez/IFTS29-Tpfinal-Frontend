@@ -10,7 +10,7 @@ const UpdateStock = () => {
 
   useEffect(() => {
     axios
-      .get("https://ifts-29-tpfinal-backend.vercel.app/products")
+      .get("https://ifts29-tpfinal-backend.onrender.com/products")
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Error al cargar productos:", err))
       .finally(() => setLoading(false));

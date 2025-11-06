@@ -12,6 +12,7 @@ import ProductDetail from "./components/products/ProductDetail";
 import Login from "./components/login/Login";
 import Cart from "./components/cart/Cart";
 import UpdateStock from "./components/admin/UpdateStock";
+import AddProduct from './components/admin/AddProduct.jsx';
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("https://ifts-29-tpfinal-backend.vercel.app/products")
+      .get("https://ifts29-tpfinal-backend.onrender.com/products")
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Error al traer productos:", err))
       .finally(() => setLoading(false));
@@ -44,6 +45,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/carrito" element={<Cart />} />
           <Route path="/admin/stock" element={<UpdateStock />} />
+          <Route path="/admin/add" element={<AddProduct />} />
         </Routes>     
         <Footer />
       </div>
