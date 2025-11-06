@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import "./addproduct.css";
+import "./addProduct.css";
 
 function AddProduct() {
   const [form, setForm] = useState({
