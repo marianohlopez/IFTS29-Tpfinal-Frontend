@@ -4,7 +4,7 @@ import axios from "axios";
 import MyNavbar from './components/navbar/Navbar.jsx';
 import Home from './components/home/Home.jsx'; 
 import Footer from './components/footer/Footer.jsx';
-import About from './components/aboutUS/AboutUS.jsx';
+import About from './components/aboutUS/AboutUs.jsx';
 import ProductsPage from "./components/products/ProductsPage";
 import ContactPage from "./components/contact/ContactPage";
 import NotFoundPage from "./components/notfound/NotFoundPage";
