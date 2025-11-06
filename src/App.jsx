@@ -5,13 +5,13 @@ import MyNavbar from './components/navbar/Navbar.jsx';
 import Home from './components/home/Home.jsx'; 
 import Footer from './components/footer/Footer.jsx';
 import About from './components/aboutUS/AboutUs.jsx';
-import ProductsPage from "./components/products/ProductsPage";
-import ContactPage from "./components/contact/ContactPage";
-import NotFoundPage from "./components/notfound/NotFoundPage";
-import ProductDetail from "./components/products/ProductDetail";
-import Login from "./components/login/Login";
-import Cart from "./components/cart/Cart";
-import UpdateStock from "./components/admin/UpdateStock";
+import ProductsPage from "./components/products/ProductsPage.jsx";
+import ContactPage from "./components/contact/ContactPage.jsx";
+import NotFoundPage from "./components/notfound/NotFoundPage.jsx";
+import ProductDetail from "./components/products/ProductDetail.jsx";
+import Login from "./components/login/Login.jsx";
+import Cart from "./components/cart/Cart.jsx";
+import UpdateStock from "./components/admin/UpdateStock.jsx";
 import AddProduct from './components/admin/AddProduct.jsx';
 
 function App() {
