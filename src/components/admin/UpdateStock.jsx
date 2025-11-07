@@ -8,7 +8,7 @@ const UpdateStock = () => {
   const [message, setMessage] = useState("");
   const [newStocks, setNewStocks] = useState({});
 
-  const backendURL = "https://ifts29-tpfinal-backend.onrender.com"; // asegurate de usar el dominio correcto
+  const backendURL = "https://ifts29-tpfinal-backend.onrender.com";
 
   useEffect(() => {
     axios
