@@ -8,20 +8,20 @@ const UpdateStock = () => {
   const [message, setMessage] = useState("");
   const [newStocks, setNewStocks] = useState({});
 
+  const backendURL = "https://ifts29-tpfinal-backend.onrender.com"; // asegurate de usar el dominio correcto
+
   useEffect(() => {
     axios
-      .get("https://ifts29-tpfinal-backend.onrender.com/products")
+      .get(`${backendURL}/products`)
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Error al cargar productos:", err))
       .finally(() => setLoading(false));
   }, []);
 
-  // Guardar valor nuevo sin tocar el producto original
   const handleStockInput = (id, value) => {
     setNewStocks((prev) => ({ ...prev, [id]: value }));
   };
 
-  // Enviar actualización al backend
   const handleUpdate = async (id) => {
     const stock = newStocks[id];
     if (stock === undefined || stock === "") {
@@ -32,10 +32,9 @@ const UpdateStock = () => {
     setMessage("Actualizando...");
 
     try {
-      const res = await axios.put(
-        `https://ifts-29-tpfinal-backend.vercel.app/products/${id}`,
-        { stock: parseInt(stock) }
-      );
+      const res = await axios.put(`${backendURL}/products/${id}`, {
+        stock: parseInt(stock),
+      });
 
       if (res.status === 200) {
         setProducts((prev) =>
@@ -54,11 +53,30 @@ const UpdateStock = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    if (!window.confirm("¿Seguro que querés eliminar este producto?")) return;
+
+    setMessage("Eliminando producto...");
+
+    try {
+      const res = await axios.delete(`${backendURL}/products/${id}`);
+      if (res.status === 200) {
+        setProducts((prev) => prev.filter((p) => p._id !== id));
+        setMessage("🗑️ Producto eliminado correctamente");
+      } else {
+        setMessage("❌ No se pudo eliminar el producto");
+      }
+    } catch (error) {
+      console.error(error);
+      setMessage("❌ Error al eliminar el producto");
+    }
+  };
+
   if (loading) return <main><h2>Cargando productos...</h2></main>;
 
   return (
     <main className="update-stock-container">
-      <h2>Actualizar stock de productos</h2>
+      <h2>Administrar productos</h2>
       {message && <p className="update-stock-message">{message}</p>}
 
       <table className="update-stock-table">
@@ -68,7 +86,8 @@ const UpdateStock = () => {
             <th>Precio</th>
             <th>Stock actual</th>
             <th>Nuevo stock</th>
-            <th>Acción</th>
+            <th>Actualizar</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -89,8 +108,19 @@ const UpdateStock = () => {
                 />
               </td>
               <td>
-                <button onClick={() => handleUpdate(product._id)}>
+                <button
+                  className="btn-update"
+                  onClick={() => handleUpdate(product._id)}
+                >
                   Guardar
+                </button>
+              </td>
+              <td>
+                <button
+                  className="btn-delete"
+                  onClick={() => handleDelete(product._id)}
+                >
+                  🗑️ Eliminar
                 </button>
               </td>
             </tr>
