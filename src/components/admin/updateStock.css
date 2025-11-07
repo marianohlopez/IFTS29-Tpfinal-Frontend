@@ -70,3 +70,25 @@ button {
 .btn-delete:hover {
   background: #d32f2f;
 }
+
+.update-stock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn-add {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.btn-add:hover {
+  background-color: #218838;
+}

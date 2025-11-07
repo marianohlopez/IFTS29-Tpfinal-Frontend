@@ -76,7 +76,12 @@ const UpdateStock = () => {
 
   return (
     <main className="update-stock-container">
-      <h2>Administrar productos</h2>
+      <div className="update-stock-header">
+        <h2>Administrar productos</h2>
+        <button className="btn-add" onClick={() => window.open("/admin/add", "_blank")}>
+          ➕ Agregar nuevo producto
+        </button>
+      </div>
       {message && <p className="update-stock-message">{message}</p>}
 
       <table className="update-stock-table">
