@@ -13,6 +13,7 @@ import Login from "./components/login/Login.jsx";
 import Cart from "./components/cart/Cart.jsx";
 import UpdateStock from "./components/admin/UpdateStock.jsx";
 import AddProduct from './components/admin/AddProduct.jsx';
+import ProtectedRoute from './components/utils/ProtectedRoute.jsx';
 
 function App() {
 
@@ -44,8 +45,22 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/carrito" element={<Cart />} />
-          <Route path="/admin/stock" element={<UpdateStock />} />
-          <Route path="/admin/add" element={<AddProduct />} />
+          <Route
+            path="/admin/stock"
+            element={
+              <ProtectedRoute>
+                <UpdateStock />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/add"
+            element={
+              <ProtectedRoute>
+                <AddProduct />
+              </ProtectedRoute>
+            }
+          />
         </Routes>     
         <Footer />
       </div>
