@@ -31,10 +31,10 @@ const MyNavbar = ({setSearchTerm}) => {
             onChange={handleSearchChange}/>
         </div>
 
-        <div className="cart d-flex align-items-center">
+        <a href="/carrito" className="cart d-flex align-items-center text-decoration-none text-dark">
           <span className="me-2">CARRITO</span>
           <i className="bi bi-cart4 fs-2"></i>
-        </div>
+        </a>
       </div>
       <Navbar onToggle={darkFont} className='navBar sticky-top' expand="lg">
         <Container className={font}>
