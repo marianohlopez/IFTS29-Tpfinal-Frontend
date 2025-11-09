@@ -22,8 +22,18 @@ const EMAILJS_PUBLIC_KEY = 'SActIF6YHXjKQTXrT';
     setProduct({ ...product, quantity: newQuantity });
   };
 
-  const updateCart = () => {
-    alert("Carrito actualizado con la cantidad: " + product.quantity);
+  const handleQuantityChange = (event, productId) => {
+    const newQuantity = event.target.value;
+    updateQuantity(productId, newQuantity);
+    
+    if (newQuantity < 1) {
+       setAlertModal({
+        show: true, 
+        title: '⚠️ Producto Eliminado', 
+        body: 'La cantidad no puede ser menor a 1, el producto ha sido eliminado del carrito.',
+        variant: 'warning'
+      });
+    }
   };
   
   const calculateShipping = () => {

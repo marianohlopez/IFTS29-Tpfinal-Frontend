@@ -19,6 +19,42 @@ function App() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("")
+  const emptyCart = () => {
+    setCartItems([]);
+  };
+
+  const updateQuantity = (_id, newQuantity) => {
+    const quantity = parseInt(newQuantity);
+
+    if (isNaN(quantity) || quantity < 1) {
+      removeCartItem(_id);
+      return;
+    }
+
+    setCartItems(prevItems => {
+        return prevItems.map(item => 
+            item._id === _id
+                ? { ...item, quantity: quantity }
+                : item
+        );
+    });
+  };
+
+  const addToCart = (productToAdd) => {
+    setCartItems(prevItems => {
+        const existingItem = prevItems.find(item => item._id === productToAdd._id);
+
+        if (existingItem) {
+            return prevItems.map(item => 
+                item._id === productToAdd._id
+                    ? { ...item, quantity: item.quantity + 1 }
+                    : item
+            );
+        } else {
+            return [...prevItems, { ...productToAdd, quantity: 1 }];
+        }
+    });
+  };
 
   useEffect(() => {
     axios
