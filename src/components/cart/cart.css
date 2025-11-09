@@ -75,15 +75,15 @@
 }
 
 .btn-primary-action {
-    background-color: #a3a3a3 !important; 
-    border-color: #a3a3a3 !important;
+    background-color: #3662f1 !important; 
+    border-color: #5d3dec !important;
     font-weight: 600;
     letter-spacing: 1px;
 }
 
 .btn-primary-action:hover {
-    background-color: #8f8f8f !important;
-    border-color: #8f8f8f !important;
+    background-color: #33aae0 !important;
+    border-color: #5d3dec !important;
 }
 
 .coupon-title {
