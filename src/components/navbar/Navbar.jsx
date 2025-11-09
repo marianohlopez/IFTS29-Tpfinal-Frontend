@@ -17,8 +17,16 @@ const MyNavbar = ({setSearchTerm, cartItems}) => {
   const darkFont = () => font === false? setFont('fontHamburguer') : setFont(false);
 
   const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
+    const value = e.target.value;
+    setCurrentSearchValue(value);
+    setSearchTerm(value);
   };
+  
+  const handleSearchClick = () => {    
+    navigate('/productos');
+  };
+
+  const totalItems = cartItems?.reduce((total, item) => total + item.quantity, 0) || 0;
 
   return (
     <>
@@ -28,9 +36,14 @@ const MyNavbar = ({setSearchTerm, cartItems}) => {
         </div>
 
         <div className="searchBar d-flex align-items-center">
-          <i className="bi bi-search me-2"></i>
+          <i 
+            className="bi bi-search me-2" 
+            onClick={handleSearchClick} 
+            style={{ cursor: 'pointer' }}
+          ></i>
           <input type="text" 
             placeholder="Buscar productos..." 
+            value={currentSearchValue} 
             onChange={handleSearchChange}/>
         </div>
 
