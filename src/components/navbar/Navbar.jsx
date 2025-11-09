@@ -37,6 +37,7 @@ const MyNavbar = ({setSearchTerm, cartItems}) => {
 
         <div className="searchBar d-flex align-items-center">
           <i 
+            data-testid="search-icon"
             className="bi bi-search me-2" 
             onClick={handleSearchClick} 
             style={{ cursor: 'pointer' }}

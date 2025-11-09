@@ -30,8 +30,7 @@ function App() {
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("")
-  
+  const [searchTerm, setSearchTerm] = useState("")  
   const [cartItems, setCartItems] = useState(initializeCart);
 
   useEffect(() => {
