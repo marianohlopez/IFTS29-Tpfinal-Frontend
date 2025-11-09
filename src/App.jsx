@@ -15,11 +15,75 @@ import UpdateStock from "./components/admin/UpdateStock.jsx";
 import AddProduct from './components/admin/AddProduct.jsx';
 import ProtectedRoute from './components/utils/ProtectedRoute.jsx';
 
+const CART_STORAGE_KEY = 'tienda_carrito_items';
+
+const initializeCart = () => {
+    try {
+        const storedItems = localStorage.getItem(CART_STORAGE_KEY);
+        return storedItems ? JSON.parse(storedItems) : [];
+    } catch (error) {
+        console.error("Error al cargar el carrito de LocalStorage:", error);
+        return [];
+    }
+};
+
 function App() {
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("")
+  const [searchTerm, setSearchTerm] = useState("")  
+  const [cartItems, setCartItems] = useState(initializeCart);
+
+  useEffect(() => {
+    try {
+        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
+    } catch (error) {
+        console.error("Error al guardar el carrito en LocalStorage:", error);
+    }
+  }, [cartItems]);
+
+  const removeCartItem = (_id) => {
+    setCartItems(prevItems => {
+        return prevItems.filter(item => item._id !== _id);
+    });
+  };
+
+  const emptyCart = () => {
+    setCartItems([]);
+  };
+
+  const updateQuantity = (_id, newQuantity) => {
+    const quantity = parseInt(newQuantity);
+
+    if (isNaN(quantity) || quantity < 1) {
+      removeCartItem(_id);
+      return;
+    }
+
+    setCartItems(prevItems => {
+        return prevItems.map(item => 
+            item._id === _id
+                ? { ...item, quantity: quantity }
+                : item
+        );
+    });
+  };
+
+  const addToCart = (productToAdd) => {
+    setCartItems(prevItems => {
+        const existingItem = prevItems.find(item => item._id === productToAdd._id);
+
+        if (existingItem) {
+            return prevItems.map(item => 
+                item._id === productToAdd._id
+                    ? { ...item, quantity: item.quantity + 1 }
+                    : item
+            );
+        } else {
+            return [...prevItems, { ...productToAdd, quantity: 1 }];
+        }
+    });
+  };
 
   useEffect(() => {
     axios
@@ -32,7 +96,7 @@ function App() {
   return (
     <Router>
       <div>
-        <MyNavbar setSearchTerm={setSearchTerm} />       
+        <MyNavbar setSearchTerm={setSearchTerm} cartItems={cartItems} />       
         <Routes>
           <Route path="/" element={<Home />} />           
           <Route path="/quienes-somos" element={<About />} />   
@@ -41,26 +105,24 @@ function App() {
             loading={loading} 
             searchTerm={searchTerm} />} />  
           <Route path="/contacto" element={<ContactPage />} />
-          <Route path="/productos/:id" element={<ProductDetail products={products} />} />
+          
+          <Route path="/productos/:id" element={<ProductDetail 
+            products={products}
+            addToCart={addToCart}
+          />} />
+          
           <Route path="*" element={<NotFoundPage />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/carrito" element={<Cart />} />
-          <Route
-            path="/admin/stock"
-            element={
-              <ProtectedRoute>
-                <UpdateStock />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/add"
-            element={
-              <ProtectedRoute>
-                <AddProduct />
-              </ProtectedRoute>
-            }
-          />
+          
+          <Route path="/carrito" element={<Cart 
+            cartItems={cartItems} 
+            removeCartItem={removeCartItem}
+            updateQuantity={updateQuantity} 
+            emptyCart={emptyCart} 
+          />} />
+          
+          <Route path="/admin/stock" element={<UpdateStock />} />
+          <Route path="/admin/add" element={<AddProduct />} />
         </Routes>     
         <Footer />
       </div>

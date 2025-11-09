@@ -3,19 +3,30 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import { useState } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar  from 'react-bootstrap/Navbar';
+import { Link, useNavigate } from 'react-router-dom'; 
 import './navbar.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const MyNavbar = ({setSearchTerm}) => {
+const MyNavbar = ({setSearchTerm, cartItems}) => {
 
-  const [font, setFont] = useState(false)
+  const navigate = useNavigate(); 
+  const [font, setFont] = useState(false);
+  const [currentSearchValue, setCurrentSearchValue] = useState('');
 
   const darkFont = () => font === false? setFont('fontHamburguer') : setFont(false);
 
   const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
+    const value = e.target.value;
+    setCurrentSearchValue(value);
+    setSearchTerm(value);
   };
+  
+  const handleSearchClick = () => {    
+    navigate('/productos');
+  };
+
+  const totalItems = cartItems?.reduce((total, item) => total + item.quantity, 0) || 0;
 
   return (
     <>
@@ -25,16 +36,27 @@ const MyNavbar = ({setSearchTerm}) => {
         </div>
 
         <div className="searchBar d-flex align-items-center">
-          <i className="bi bi-search me-2"></i>
+          <i 
+            data-testid="search-icon"
+            className="bi bi-search me-2" 
+            onClick={handleSearchClick} 
+            style={{ cursor: 'pointer' }}
+          ></i>
           <input type="text" 
             placeholder="Buscar productos..." 
+            value={currentSearchValue} 
             onChange={handleSearchChange}/>
         </div>
 
-        <div className="cart d-flex align-items-center">
+        <Link to="/carrito" className="cart d-flex align-items-center text-decoration-none text-dark position-relative">
           <span className="me-2">CARRITO</span>
           <i className="bi bi-cart4 fs-2"></i>
-        </div>
+          {totalItems > 0 && (
+            <span className="cart-badge badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">
+              {totalItems}
+            </span>
+          )}
+        </Link>
       </div>
       <Navbar onToggle={darkFont} className='navBar sticky-top' expand="lg">
         <Container className={font}>

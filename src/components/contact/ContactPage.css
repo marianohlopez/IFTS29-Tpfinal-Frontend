@@ -86,7 +86,7 @@
 .contact-form button {
   margin-top: 1.2rem;
   padding: 0.8rem 0;
-  background: #bdbdbd;
+  background: #3662f1;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -97,7 +97,7 @@
 }
 
 .contact-form button:hover {
-  background: #757575;
+  background: #33aae0;
 }
 
 @media (max-width: 700px) {

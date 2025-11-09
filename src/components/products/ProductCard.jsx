@@ -5,7 +5,7 @@ const ProductCard = ({ product }) => (
     <Link to={`/productos/${product._id}`} className="product-card-link">
         <div className="product-card">
             <img 
-                src={product.images[0]} 
+                src={product.images[0] || '/placeholder.jpg'} 
                 alt={product.name} 
                 className="product-card-img"
             />
