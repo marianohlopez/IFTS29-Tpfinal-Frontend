@@ -6,7 +6,7 @@ const UpdateStock = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
-  const [newStocks, setNewStocks] = useState({});
+  const [edits, setEdits] = useState({});
 
   const backendURL = "https://ifts29-tpfinal-backend.onrender.com";
 
@@ -18,14 +18,17 @@ const UpdateStock = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  const handleStockInput = (id, value) => {
-    setNewStocks((prev) => ({ ...prev, [id]: value }));
+  const handleInputChange = (id, field, value) => {
+    setEdits((prev) => ({
+      ...prev,
+      [id]: { ...prev[id], [field]: value },
+    }));
   };
 
   const handleUpdate = async (id) => {
-    const stock = newStocks[id];
-    if (stock === undefined || stock === "") {
-      setMessage("⚠️ Ingresá un valor de stock nuevo antes de guardar");
+    const productEdit = edits[id];
+    if (!productEdit) {
+      setMessage("⚠️ No hay cambios para guardar");
       return;
     }
 
@@ -33,19 +36,38 @@ const UpdateStock = () => {
 
     try {
       const res = await axios.put(`${backendURL}/products/${id}`, {
-        stock: parseInt(stock),
+        stock:
+          productEdit.stock !== undefined
+            ? parseInt(productEdit.stock)
+            : undefined,
+        price:
+          productEdit.price !== undefined
+            ? parseFloat(productEdit.price)
+            : undefined,
       });
 
       if (res.status === 200) {
         setProducts((prev) =>
           prev.map((p) =>
-            p._id === id ? { ...p, stock: parseInt(stock) } : p
+            p._id === id
+              ? {
+                  ...p,
+                  stock:
+                    productEdit.stock !== undefined
+                      ? parseInt(productEdit.stock)
+                      : p.stock,
+                  price:
+                    productEdit.price !== undefined
+                      ? parseFloat(productEdit.price)
+                      : p.price,
+                }
+              : p
           )
         );
-        setNewStocks((prev) => ({ ...prev, [id]: "" }));
-        setMessage("✅ Stock actualizado correctamente");
+        setEdits((prev) => ({ ...prev, [id]: {} }));
+        setMessage("✅ Producto actualizado correctamente");
       } else {
-        setMessage("❌ Error al actualizar el stock");
+        setMessage("❌ Error al actualizar el producto");
       }
     } catch (error) {
       console.error(error);
@@ -88,10 +110,9 @@ const UpdateStock = () => {
         <thead>
           <tr>
             <th>Producto</th>
-            <th>Precio</th>
-            <th>Stock actual</th>
-            <th>Nuevo stock</th>
-            <th>Actualizar</th>
+            <th>Precio ($)</th>
+            <th>Stock</th>
+            <th>Guardar</th>
             <th>Eliminar</th>
           </tr>
         </thead>
@@ -99,17 +120,28 @@ const UpdateStock = () => {
           {products.map((product) => (
             <tr key={product._id}>
               <td>{product.name}</td>
-              <td>${product.price.toLocaleString()}</td>
-              <td>{product.stock}</td>
+              <td>
+                <input
+                  type="number"
+                  step="0.01"
+                  value={
+                    edits[product._id]?.price ?? product.price ?? ""
+                  }
+                  onChange={(e) =>
+                    handleInputChange(product._id, "price", e.target.value)
+                  }
+                />
+              </td>
               <td>
                 <input
                   type="number"
                   min="0"
-                  value={newStocks[product._id] || ""}
-                  onChange={(e) =>
-                    handleStockInput(product._id, e.target.value)
+                  value={
+                    edits[product._id]?.stock ?? product.stock ?? ""
                   }
-                  placeholder="Nuevo valor"
+                  onChange={(e) =>
+                    handleInputChange(product._id, "stock", e.target.value)
+                  }
                 />
               </td>
               <td>

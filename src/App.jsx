@@ -13,6 +13,7 @@ import Login from "./components/login/Login.jsx";
 import Cart from "./components/cart/Cart.jsx";
 import UpdateStock from "./components/admin/UpdateStock.jsx";
 import AddProduct from './components/admin/AddProduct.jsx';
+import ProtectedRoute from './components/utils/ProtectedRoute.jsx';
 
 const CART_STORAGE_KEY = 'tienda_carrito_items';
 
