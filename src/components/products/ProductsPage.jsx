@@ -1,5 +1,10 @@
 import ProductCard from "./ProductCard";
 
+const normalizeString = (str) => {
+  if (!str) return '';  
+  return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+};
+
 const ProductsPage = ({ products, loading, searchTerm }) => {
 
   if (loading) {
@@ -10,8 +15,10 @@ const ProductsPage = ({ products, loading, searchTerm }) => {
     );
   }
 
+  const normalizedSearchTerm = normalizeString(searchTerm);
+
   const filteredProducts = products.filter((p) =>
-    p.name.toLowerCase().includes(searchTerm.toLowerCase())
+    normalizeString(p.name).includes(normalizedSearchTerm)
   );
 
   if (!filteredProducts.length) {

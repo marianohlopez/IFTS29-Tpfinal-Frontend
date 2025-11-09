@@ -47,10 +47,15 @@ const MyNavbar = ({setSearchTerm, cartItems}) => {
             onChange={handleSearchChange}/>
         </div>
 
-        <a href="/carrito" className="cart d-flex align-items-center text-decoration-none text-dark">
+        <Link to="/carrito" className="cart d-flex align-items-center text-decoration-none text-dark position-relative">
           <span className="me-2">CARRITO</span>
           <i className="bi bi-cart4 fs-2"></i>
-        </a>
+          {totalItems > 0 && (
+            <span className="cart-badge badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">
+              {totalItems}
+            </span>
+          )}
+        </Link>
       </div>
       <Navbar onToggle={darkFont} className='navBar sticky-top' expand="lg">
         <Container className={font}>
