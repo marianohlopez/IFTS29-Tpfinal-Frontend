@@ -4,18 +4,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import emailjs from 'emailjs-com'; 
 import './cart.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-const Cart = () => {
-  const [product, setProduct] = useState({
-    id: 1,
-    name: 'Silla Premium de ratán Tapizada Chenille Patas de Madera',
-    price: 223200,
-    quantity: 1,
-    image: '/assets/silla_premium.jpg', 
-  });
+const EMAILJS_SERVICE_ID = 'service_xhegdmm'; 
+const EMAILJS_TEMPLATE_ID = 'template_4xdymqc'; 
+const EMAILJS_PUBLIC_KEY = 'SActIF6YHXjKQTXrT'; 
 
   const subtotal = product.price * product.quantity;
   const shipping = 0; 
@@ -124,10 +120,45 @@ const Cart = () => {
                 Aplicar cupón
               </Button>
             </Form.Group>
-          </div>
-        </Col>
-      </Row>
-    </Container>
+            <Form.Group className="mb-3">
+              <Form.Label>Teléfono</Form.Label>
+              <Form.Control
+                type="tel"
+                placeholder="Ej: 1123456789"
+                name="phone"
+                value={buyerInfo.phone}
+                onChange={handleBuyerInfoChange}
+                required
+              />
+            </Form.Group>
+            <div className="d-flex justify-content-end gap-2 mt-4">
+              <Button variant="secondary" onClick={handleClose}>
+                Cancelar
+              </Button>
+              <Button variant="primary" type="submit">
+                Confirmar Pedido
+              </Button>
+            </div>
+          </Form>
+        </Modal.Body>
+      </Modal>
+
+      <Modal show={alertModal.show} onHide={handleCloseAlert} centered>
+        <Modal.Header closeButton>
+          <Modal.Title className={alertModal.variant === 'success' ? 'text-success' : alertModal.variant === 'danger' ? 'text-danger' : alertModal.variant === 'warning' ? 'text-warning' : 'text-info'}>
+            {alertModal.title}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {alertModal.body}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseAlert}>
+            Cerrar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 };
 
