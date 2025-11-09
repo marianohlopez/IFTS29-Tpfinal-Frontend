@@ -3,13 +3,16 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import { useState } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar  from 'react-bootstrap/Navbar';
+import { Link, useNavigate } from 'react-router-dom'; 
 import './navbar.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const MyNavbar = ({setSearchTerm}) => {
+const MyNavbar = ({setSearchTerm, cartItems}) => {
 
-  const [font, setFont] = useState(false)
+  const navigate = useNavigate(); 
+  const [font, setFont] = useState(false);
+  const [currentSearchValue, setCurrentSearchValue] = useState('');
 
   const darkFont = () => font === false? setFont('fontHamburguer') : setFont(false);
 
