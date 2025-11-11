@@ -104,25 +104,35 @@ function App() {
             products={products} 
             loading={loading} 
             searchTerm={searchTerm} />} />  
-          <Route path="/contacto" element={<ContactPage />} />
-          
+          <Route path="/contacto" element={<ContactPage />} />        
           <Route path="/productos/:id" element={<ProductDetail 
             products={products}
             addToCart={addToCart}
-          />} />
-          
+          />} />        
           <Route path="*" element={<NotFoundPage />} />
-          <Route path="/login" element={<Login />} />
-          
+          <Route path="/login" element={<Login />} />         
           <Route path="/carrito" element={<Cart 
             cartItems={cartItems} 
             removeCartItem={removeCartItem}
             updateQuantity={updateQuantity} 
             emptyCart={emptyCart} 
-          />} />
-          
-          <Route path="/admin/stock" element={<UpdateStock />} />
-          <Route path="/admin/add" element={<AddProduct />} />
+          />} />         
+          <Route
+            path="/admin/stock"
+            element={
+              <ProtectedRoute>
+                <UpdateStock />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/add"
+            element={
+              <ProtectedRoute>
+                <AddProduct />
+              </ProtectedRoute>
+            }
+          />
         </Routes>     
         <Footer />
       </div>
